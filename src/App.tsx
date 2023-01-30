@@ -128,7 +128,7 @@ const App = () => {
                <div className="noise"></div>
                <div className="overlay"></div>
             <div className="terminal">
-                <h1 className="errorcode">Data Source Error<span >404</span></h1>
+              <h1 className="errorcode">Data Source Error <span >404</span></h1>
                 <p className = "output">contact customer support</p>
             </div>
           </div>
@@ -139,4 +139,3 @@ const App = () => {
   
 };
 export default App;
-
