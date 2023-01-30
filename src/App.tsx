@@ -128,8 +128,8 @@ const App = () => {
                <div className="noise"></div>
                <div className="overlay"></div>
             <div className="terminal">
-              <h1 className="errorcode">Error <span >404</span></h1>
-                <p className="output">Page is not found </p>
+              <h1 className="errorcode">Data Source Error <span >404</span></h1>
+                <p className = "output">contact customer support</p>
             </div>
           </div>
         )}
