@@ -6,7 +6,6 @@ Approach: I decided to use React with axios and chart.js because they have great
           performance, big developer communities and are highly flexible.
 
 Future plans:
-  * Add robust error handling (display error message to user)
   * Make the view's HTML templated so it can be separated from the code
   * Support for arbitrary numbers of sectors
 

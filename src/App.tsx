@@ -36,23 +36,22 @@ const App = () => {
 
   // Use the useEffect hook to call the fetchData function only once when the
   // component is first mounted, as specified by the empty array as the second
-  // argument.ß
+  // argument.
+  
   useEffect(() => {
     // Fetch data from API endpoint
     const fetchData = async () => {
-      let result = await axios("http://substantiveresearch.pythonanywhere.com")
-      // TODO: Add error handling
-      // .then (function (result) {
-      //   setInteractionData(result.data);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // })
-      setInteractionData(result.data);
+      try {
+        let result = await axios("http://substantiveresearch.pythonanywhere.com/")
+        setInteractionData(result.data);
+      } catch (error) {
+        console.error(error);
+        throw new Error("404: Page not found");
+      }
     };
     fetchData();
   }, []);
-
+  
   const sectorCount = {};
 
   // Loop through interaction data and count the number of interactions per
@@ -111,18 +110,33 @@ const App = () => {
       },
     ],
   };
-
+  
   // Return the HTML for the pie chart wrapped in a div with the class "pie"
-  return (
-    <div className="pie">
-    <h2>Interaction Data by Sector</h2>
-    <Pie 
-    data={dataWithPercent}
-    // @ts-ignore
-    options={options} />
-    </div>
-  );
+  
+    return (
+      <div>
+        {Object.keys(interactionData).length !== 0 ? (
+          <div className="pie">
+             <h2>Interaction Data by Sector</h2>
+             <Pie 
+             data={dataWithPercent}
+             // @ts-ignore
+             options={options} />
+          </div>
+        ) : (
+          <div className="error">
+               <div className="noise"></div>
+               <div className="overlay"></div>
+            <div className="terminal">
+                <h1 className="errorcode">Data Source Error<span >404</span></h1>
+                <p className = "output">contact customer support</p>
+            </div>
+          </div>
+        )}
+        
+      </div>
+    );
+  
 };
-
 export default App;
 
